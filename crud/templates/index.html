@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Main Page</title>
+    <link rel = 'stylesheet' href = "{% static "css/all.css" %}">
+</head>
+
+<body>
+
+    <h1 class='title'>{{ title }}</h1>  
+    <h1>{{ name }}</h2>
+
+    
+    <form action = "save_model" method = "POST">
+        {% csrf_token %} 
+        <table>
+            {{form}}
+        </table>
+        <button>save</button>
+    </form>
+    <table>   
+        {% for car in cars %}
+        <thead>
+            <tr>
+                <td>Color</td>
+                <td>Speed</td>
+                <td>Model</td>
+                <td>Tags</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>{{car.color}}</td>
+            <td>{{car.speed}}</td>
+            <td>{{car.model}}</td>
+            <td>
+                {% for tag in car.tags %}
+                {{tag}},
+                {% endfor %}
+            </td>
+            <td> <a href='delete_model?pk={{car.pk}}'>DELETE</a> || <a href='edit_model?pk={{car.pk}}'>EDIT</a></td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+
+</html>

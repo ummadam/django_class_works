@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second Page</title>
+</head>
+
+<body>
+    <form action = "update_model" method = "POST">
+        {% csrf_token %} 
+        <table>
+            <tr>
+                <td>                   
+                    Color 
+                    <input type="text" name="color" value={{car.color}}>                                   
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Speed
+                    <input type="text" name="speed" value={{car.speed}}>
+                </td>              
+            </tr>
+            <tr>
+                <td>
+                    Model
+                    <input type="text" name="model" value={{car.model}}>
+                </td>              
+            </tr>
+            <tr>
+                <td>
+                    Tags
+                    <input type="text" name="tags" value={{car.tags}}>
+                </td>
+                            
+            </tr>
+            <input type="hidden" name="pk" value={{car.pk}}>
+            
+        </table>
+        <button>update</button>
+    </form>
+    
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Books Page</title>
+</head>
+
+<body>
+    <ol>
+        {% for book in books %}
+        <ul>
+            <h2>{{ book.book_name }}</h2>
+            <li>Price: {{ book.book_price }}</li>
+            <li>Language: {{ book.book_origin }}</li>
+
+            <ul>
+                {% for category in book.book_category.all %}
+                Categories:
+                <li>
+                    {{ category.category_name }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+            
+        </ul>
+
+        {% endfor %}
+
+    </ol>
+
+   
+     
+
+
+</body>
+
+</html>
